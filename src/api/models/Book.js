@@ -10,6 +10,11 @@ const bookSchema = new mongoose.Schema(
     coverImage: { type: String }, // URL de la portada (Cloudinary en los próximos pasos)
     pages: { type: Number },
     language: { type: String, default: "Español", trim: true },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   {
     timestamps: true,
