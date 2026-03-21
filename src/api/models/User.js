@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     role: { type: String, enum: ["user", "admin"], default: "user" },
     favouriteGenres: [{ type: String, trim: true }],
+    avatar: { type: String }, //! URL de la imagen (añadiré Cloudinary en la próxima sesión ¡IMPORTANTE!)
   },
   {
     timestamps: true,

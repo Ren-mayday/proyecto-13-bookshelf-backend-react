@@ -7,7 +7,7 @@ const getAllBooks = async (req, res) => {
     const { title, author } = req.body; // params de la URL (?title=...&author=...)
     const filter = {}; // Empieza con filtro vacío - si no hay params, devuelve todos los libros
 
-    if (title) filter.title = new RegExp(title, "i");
+    if (title) filter.title = new RegExp(title, "i"); // ignora mayúsculas y minúsculas
     if (author) filter.author = new RegExp(author, "i");
 
     const books = await Book.find(filter).sort({ createdAt: -1 }); // de más nuevo a más antiguo
