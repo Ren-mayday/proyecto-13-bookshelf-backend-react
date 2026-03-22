@@ -18,7 +18,7 @@ A fullstack platform where book lovers can discover, add and review books. Regis
 - ➕ Add books with title, author, genre, synopsis and cover image
 - ⭐ Write, edit and delete reviews with a rating from 1 to 5
 - 🛡️ Admin can manage all users, books and reviews
-- 📁vDatabase seeded from CSV files using Node.js fs module
+- 📁 Database seeded from CSV files using Node.js fs module
 
 ## Getting Started
 
