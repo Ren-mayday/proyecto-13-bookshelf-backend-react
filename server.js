@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const { connectDB } = require("./src/config/db");
 const userRoutes = require("./src/api/routes/userRoutes");
 const bookRoutes = require("./src/api/routes/bookRoutes");
@@ -7,6 +8,13 @@ const reviewRoutes = require("./src/api/routes/reviewRoutes");
 
 const app = express();
 connectDB();
+
+app.use(
+  cors({
+    origin: "https://localhost:5173",
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 
