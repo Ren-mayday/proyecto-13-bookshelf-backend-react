@@ -4,7 +4,7 @@ const Book = require("../models/Book");
 //! GET todos los libros
 const getAllBooks = async (req, res) => {
   try {
-    const { title, author } = req.body; // params de la URL (?title=...&author=...)
+    const { title, author } = req.query; // params de la URL (?title=...&author=...)
     const filter = {}; // Empieza con filtro vacío - si no hay params, devuelve todos los libros
 
     if (title) filter.title = new RegExp(title, "i"); // ignora mayúsculas y minúsculas
