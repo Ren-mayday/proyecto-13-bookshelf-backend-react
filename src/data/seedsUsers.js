@@ -1,4 +1,5 @@
 const fs = require("fs");
+const bcrypt = require("bcrypt");
 const User = require("../api/models/User");
 
 const usersData = fs.readFileSync("./src/data/users.csv", "utf-8");
@@ -20,7 +21,15 @@ const users = usersCsvArrayOfObjects(usersData);
 
 const seedUsers = async () => {
   await User.deleteMany();
-  await User.insertMany(users);
+
+  const usersWithHashedPasswords = await Promise.all(
+    users.map(async (user) => ({
+      ...user,
+      password: await bcrypt.hash(user.password, 10),
+    })),
+  );
+
+  await User.insertMany(usersWithHashedPasswords);
   console.log("Usuarios insertados correctamente 👤✅");
 };
 
