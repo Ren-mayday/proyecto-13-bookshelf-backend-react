@@ -8,8 +8,8 @@ A fullstack platform where book lovers can discover, add and review books. Regis
 - **Framework:** Express.js
 - **DataBase:** MongoDB + Mongoose
 - **Authentification:** JWT + Bcrypt
-- **FrontEnd:** React + Vite (Not done yet)
-- **Deployment:** Vercel
+- **FrontEnd:** React + Vite
+- **Deployment:** Not yet
 
 ## Features
 - 🔐 User registration and login with JWT authentification
@@ -57,15 +57,15 @@ npm run dev
 | Variable | Description |
 |----------|-------------|
 | PORT | |
-| URL_DB | |
+| DB_URL | |
 | JWT_SECRET | |
 
 ### Running the project 🚀
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Starts the server in deploymnet mode |
+| `npm run dev` | Starts the server in development mode |
 | `npm start` | Start the server in production |
-| `npm run sed` | Seed the database with initial data |
+| `npm run seed` | Seed the database with initial data |
 
 ## API Endpoints
 
@@ -73,12 +73,12 @@ npm run dev
 
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
-| GET | /api/v1/users | | Admin |
-| GET | /api/v1/users/:id | | Auth |
-| POST | /api/v1/users/register | | Public |
-| POST | /api/v1/users/login | | Public |
-| PUT | /api/v1/users/update/:id | | Auth |
-| DELETE | /api/v1/users/:id | | Auth |
+| GET | /api/v1/users | Get all users | Admin |
+| GET | /api/v1/users/:id | Get user by ID | Auth |
+| POST | /api/v1/users/register | Register new user | Public |
+| POST | /api/v1/users/login | Login user | Public |
+| PUT | /api/v1/users/update/:id | Update user | Auth |
+| DELETE | /api/v1/users/:id | Delete user | Auth |
 
 ### Books 📚
 
