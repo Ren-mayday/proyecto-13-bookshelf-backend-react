@@ -4,13 +4,14 @@ const Book = require("../models/Book");
 //! GET todos los libros
 const getAllBooks = async (req, res) => {
   try {
-    const { title, author } = req.query; // params de la URL (?title=...&author=...)
+    const { title, author, createdBy } = req.query; // params de la URL (?title=...&author=...)
     const filter = {}; // Empieza con filtro vacío - si no hay params, devuelve todos los libros
 
     if (title) filter.title = new RegExp(title, "i"); // ignora mayúsculas y minúsculas
     if (author) filter.author = new RegExp(author, "i");
+    if (createdBy) filter.createdBy = createdBy;
 
-    const books = await Book.find(filter).sort({ createdAt: -1 }); // de más nuevo a más antiguo
+    const books = await Book.find(filter).populate("createdBy", "userName email").sort({ createdAt: -1 }); // de más nuevo a más antiguo
 
     return res.status(200).json(books);
   } catch (error) {
@@ -24,7 +25,7 @@ const getAllBooks = async (req, res) => {
 const getBook = async (req, res) => {
   try {
     const { id } = req.params;
-    const book = await Book.findById(id);
+    const book = await Book.findById(id).populate("createdBy", "userName email");
 
     if (!book) {
       return res.status(404).json("Libro no encontrado");
