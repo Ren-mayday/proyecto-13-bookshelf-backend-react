@@ -11,7 +11,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://bookshelf-frontend-react.vercel.app/",
     credentials: true,
   }),
 );
